@@ -1,0 +1,124 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@theme {
+  --font-sans: "Figtree", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Syne", ui-sans-serif, system-ui, sans-serif;
+
+  --color-bg: #e4e2d8;
+  --color-fg: #292925;
+  --color-muted: #66665e;
+  --color-primary: #8f7600;
+  --color-primary-fg: #fff8e8;
+  --color-ink: #1c1c18;
+  --color-card: #292925;
+  --color-card-fg: #f4f0e4;
+  --color-gold: #c4a012;
+  --color-surface: #f3efe3;
+  --color-border: rgb(41 41 37 / 0.14);
+  --color-ring: #8f7600;
+
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  --shadow-border:
+    0 0 0 1px rgb(41 41 37 / 0.08),
+    0 1px 2px -1px rgb(41 41 37 / 0.08),
+    0 8px 20px rgb(41 41 37 / 0.08);
+  --shadow-card:
+    0 0 0 1px rgb(216 184 0 / 0.22),
+    0 10px 24px rgb(0 0 0 / 0.28);
+  --shadow-card-hover:
+    0 0 0 1px rgb(216 184 0 / 0.4),
+    0 14px 32px rgb(0 0 0 / 0.34);
+
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-smooth-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html,
+  body,
+  #app {
+    min-height: 100%;
+  }
+
+  body {
+    background:
+      radial-gradient(circle at 12% 8%, rgb(216 184 0 / 0.12), transparent 28%),
+      radial-gradient(circle at 88% 92%, rgb(216 184 0 / 0.08), transparent 30%),
+      var(--color-bg);
+    background-attachment: fixed;
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+@layer utilities {
+  .aspect-poster {
+    aspect-ratio: 2 / 3;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@keyframes skeleton-move {
+  to {
+    background-position-x: -200%;
+  }
+}
+
+.skeleton-shine {
+  background-image: linear-gradient(
+    110deg,
+    var(--color-card) 8%,
+    #48483f 18%,
+    var(--color-card) 33%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-move 1.3s linear infinite;
+}
+
+.skeleton-shine-gold {
+  background-image: linear-gradient(
+    110deg,
+    #625200 8%,
+    var(--color-primary) 18%,
+    #625200 33%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-move 1.3s linear infinite;
+}
